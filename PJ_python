@@ -1,0 +1,50 @@
+armazem = {}
+
+def cadastro():
+    nome= input("digite o nome do produto: ")
+    preco = float(input("digite o preço do produto: "))
+    quantidades = float(input("digite a quantidade inicial do produto"))
+    armazem[nome] = {'preço': preco,"quantidade": quantidades}
+    print("cadastro finalizado")
+    
+    
+def vender():
+    produto = input("digite o  nome do produto para vender")
+    if produto in armazem :
+        quantidade = int(input("digite a quantidade que vai ser vendido: "))
+        if armazem[produto]["quantidade"] >= quantidade:
+            armazem[produto]["quantidade"] -= quantidade
+            print(f"foram vendidos {quantidade} unidades de {produto}")
+        else:
+            print("quantidade insuficiente")
+    else:
+        print("produto não encontrado")
+        
+def vizualizar_armazem():
+    print('estoque')
+    for produto, info in armazem.items():
+        print(f"Nome: {produto}, Preço: R${info['preço']}, quantidade: {info['quantidade']}")
+        
+while True:
+    print("="*32)
+    print("Projeto Simples")
+    print("="*32)
+    print("\nSelecione uma opção: ")
+    print("1. Cadastrar novo produto")
+    print("2. Vender produto")
+    print("3. Visualizar estoque")
+    print("4. Sair")
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == '1':
+        cadastro()
+    elif opcao == '2':
+        vender()
+    elif opcao == '3':
+        vizualizar_armazem()
+    elif opcao == '4':
+        print("Saindo do programa")
+        break
+    else:
+        print("Opção invalido. Tente novamente.")
+    
